@@ -3,7 +3,7 @@ services:
     build: .
     image: cine-review-back:latest
     ports:
-      - "3001:3000"
+      - "3001:3001"
     environment:
       - SQL_PAGE_SIZE=25
     volumes:
