@@ -1,7 +1,7 @@
 services:
   api-backend:
-    container_name: article_container
     build: .
+    image: cine-review-back:latest
     ports:
       - "3001:3000"
     environment:
