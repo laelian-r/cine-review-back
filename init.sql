@@ -1,7 +1,15 @@
+CREATE TABLE IF NOT EXISTS roles (
+    id          INTEGER PRIMARY KEY,
+    role        VARCHAR(50) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS users (
 	id          INTEGER PRIMARY KEY,
 	email     	VARCHAR(300) NOT NULL,
-	password    VARCHAR(255) NOT NULL
+	password    VARCHAR(255) NOT NULL,
+    id_role     INTEGER,
+    FOREIGN KEY (id_role) REFERENCES roles(id)
+
 );
 
 CREATE TABLE IF NOT EXISTS movies (
@@ -12,8 +20,14 @@ CREATE TABLE IF NOT EXISTS movies (
     description 	TEXT
 );
 
-INSERT INTO users (email, password) VALUES
-('test@email.com', 'azerty');
+
+INSERT INTO roles (role) VALUES
+('admin'),
+('user');
+
+INSERT INTO users (email, password, id_role) VALUES
+('admin@email.com', 'azerty', 1),
+('test@email.com', 'azerty', 2);
 
 INSERT INTO movies (title, image, category, description) VALUES
 ('Dragon', 'https://cinedweller.com/wp-content/uploads/2024/12/DRAGONS_120_DECLI3.jpg', 'Tous publics', 'Un film sur des dragons.'),
